@@ -1,5 +1,4 @@
 $(function () {
-
     // 注册登录页面切换
     $('.login_a').on('click', function () {
         $(this).parents('.login_b').hide().siblings('.login_b').show()
@@ -54,30 +53,82 @@ $(function () {
     // 登录提交数据 ajax
     $('#form_log').on('submit',function(e){
         e.preventDefault()
+        
+
         var data = {
             username:$('.dl_box [name=username]').val(),
             password:$('.dl_box [name=password]').val(),
         }
-        $.post('/api/login',
-        data,
-        function(res){
-        if(res.status!==0){
-            return layer.msg(res.message, {
-                icon: 2,
-                time: 2000 //2秒关闭（如果不配置，默认是3秒）
-            })
-        }
-        console.log(res);
-        layer.msg('登陆成功', {
-            icon: 1,
-            time: 2000 //2秒关闭（如果不配置，默认是3秒）
-        }, function () {
-            console.log(res);
-            localStorage.setItem('token',res.token)
-            location.href='/index.html'
-        });
+        
+        // $.post('/api/login',
+        // data,
+        // function(res){
+        //     console.log(res);
+        // if(res.status!==0){
+        //     return layer.msg(res.message, {
+        //         icon: 2,
+        //         time: 2000 //2秒关闭（如果不配置，默认是3秒）
+        //     })
+        // }
+        // console.log(res);
+        // layer.msg('登陆成功', {
+        //     icon: 1,
+        //     time: 2000 //2秒关闭（如果不配置，默认是3秒）
+        // }, function () {
+        //     console.log(res);
+        //     localStorage.setItem('token',res.token)
+        //     location.href='/index.html'
+        // });
+        // })
+
+        $.ajax({
+            type:'POST',
+            url:'/api/login',
+            data:data,
+            success:function(res){
+                console.log(res);
+                if(res.status!==0){
+                    return layer.msg(res.message, {
+                        icon: 2,
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    })
+                }
+                console.log(res);
+                layer.msg('登陆成功', {
+                    icon: 1,
+                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                }, function () {
+                    console.log(res);
+                    localStorage.setItem('token',res.token)
+                    location.href='/index.html'
+                });
+            }
         })
     })
-
-
 })
+
+
+
+
+//    $.ajax({
+//             type:'POST',
+//             url:'/api/login',
+//             data:data,
+//             success:function(res){
+//                 if(res.status!==0){
+//                     return layer.msg(res.message, {
+//                         icon: 2,
+//                         time: 2000 //2秒关闭（如果不配置，默认是3秒）
+//                     })
+//                 }
+//                 console.log(res);
+//                 layer.msg('登陆成功', {
+//                     icon: 1,
+//                     time: 2000 //2秒关闭（如果不配置，默认是3秒）
+//                 }, function () {
+//                     console.log(res);
+//                     localStorage.setItem('token',res.token)
+//                     location.href='/index.html'
+//                 });
+//             }
+//         })

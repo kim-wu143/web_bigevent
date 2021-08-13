@@ -18,7 +18,6 @@ function getUserInfo() {
     $.ajax({
         type: 'GET',
         url: '/my/userinfo',
-
         success: function (res) {
             if (res.status != 0) {
                 return layer.msg(res.message, {
@@ -44,7 +43,6 @@ function renderAvater(user) {
         $('.userinfo img').prop('src', user.user_pic).show().siblings('.text_avater').hide()
     } else {
         var first = name[0].toUpperCase()
-
         $('.userinfo img').hide().siblings('.text_avater').show().text(first)
     }
 }

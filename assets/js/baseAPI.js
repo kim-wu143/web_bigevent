@@ -13,7 +13,7 @@ if(options.url.includes('/my')){
 
 // 给所有ajax挂complete回调,如果非法登录，执行最后的回调函数，强制回到登录页面
 options.complete=function(res){
-    console.log(res);
+    // console.log(res);
     if (res.responseJSON.status !== 0) {
         // 强制跳转
         location.href = '/login.html'
