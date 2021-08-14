@@ -16,9 +16,9 @@ options.complete=function(res){
     // console.log(res);
     if (res.responseJSON.status !== 0) {
         // 强制跳转
-        location.href = '/login.html'
+        // location.href = '/login.html'
         // 强制清空TOKEN
-        localStorage.removeItem('token')
+        // localStorage.removeItem('token')
     }
 }
 

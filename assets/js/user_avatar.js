@@ -44,7 +44,9 @@ $('#btn_submit').on('click',function(e){
     $.ajax({
         type:'POST',
         url:'/my/update/avatar',
-        data:dataURL,
+        data:{
+          avatar:dataURL
+        },
         success:function(res){
            if(res.status!==0) {
                return layer.msg('更换失败')

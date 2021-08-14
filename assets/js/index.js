@@ -25,7 +25,6 @@ function getUserInfo() {
                     time: 2000 //2秒关闭（如果不配置，默认是3秒）
                 })
             } else {
-                console.log(res);
                 renderAvater(res.data)
             }
         },
